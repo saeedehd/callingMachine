@@ -8,6 +8,7 @@ import { LogedInGuard } from './guards/loged-in.guard';
 import { UplaodListComponent } from './uplaod-list/uplaod-list.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DepartmentDetailComponent } from './department-detail/department-detail.component';
+import { Error404Component } from './error404/error404.component';
 
 
 const routes: Routes = [
@@ -31,9 +32,10 @@ const routes: Routes = [
     {
       path: 'department/:id/edit',
       component: DepartmentDetailComponent
-    } 
+    },
   ]
-}
+},
+{ path: '**', component: Error404Component },
 ];
 
 @NgModule({

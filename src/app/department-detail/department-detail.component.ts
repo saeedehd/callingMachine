@@ -4,7 +4,6 @@ import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { MatSnackBar } from '@angular/material';
 
-
 export interface Num {
   value: string;
   viewValue: string;
