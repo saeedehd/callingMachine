@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatIconModule, MatToolbarModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -8,9 +12,16 @@ describe('ToolbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToolbarComponent ]
+      imports: [
+        TranslateModule.forRoot(),
+        MatIconModule,
+        MatToolbarModule,
+        RouterModule.forRoot([]),
+        HttpClientModule
+      ],
+      declarations: [ToolbarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

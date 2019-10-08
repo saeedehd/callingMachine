@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UplaodListComponent } from './uplaod-list.component';
 import { FileUploadModule } from 'ng2-file-upload';
-import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('UplaodListComponent', () => {
@@ -12,8 +11,8 @@ describe('UplaodListComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				imports: [ HttpClientModule, NgModule, FileUploadModule ],
-				declarations: [ UplaodListComponent ]
+				imports: [HttpClientModule, FileUploadModule],
+				declarations: [UplaodListComponent]
 			}).compileComponents();
 		})
 	);
