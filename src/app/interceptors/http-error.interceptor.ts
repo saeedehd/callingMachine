@@ -14,6 +14,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 		return next.handle(request).pipe(
 			retry(1),
 			catchError((error: HttpErrorResponse) => {
+				// tslint:disable-next-line: no-debugger
 				debugger;
 				let errorMessage = '';
 				if (error.error instanceof ErrorEvent) {
@@ -23,9 +24,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 					// server-side error
 					errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
 				}
-        window.alert(errorMessage);
+				window.alert(errorMessage);
 
-        // this.snackbar.open('اطلاعات اشتباه بود', null, { duration: 999 });
+				// this.snackbar.open('اطلاعات اشتباه بود', null, { duration: 999 });
 
 				return throwError(errorMessage);
 			})

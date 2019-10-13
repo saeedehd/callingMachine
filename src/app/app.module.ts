@@ -27,7 +27,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FileUploadModule } from 'ng2-file-upload';
 
-
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LoginComponent } from './login/login.component';
@@ -39,24 +38,28 @@ import { LogedInGuard } from './guards/loged-in.guard';
 import { DepartmentDetailComponent } from './department-detail/department-detail.component';
 import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { Error404Component } from './error404/error404.component';
+import { AddDepartmentsComponent } from './add-departments/add-departments.component';
+import { UpListsComponent } from './up-lists/up-lists.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    LoginComponent,
-    DashboardComponent,
-    UplaodListComponent,
-    DepartmentsComponent,
-    CallingListsComponent,
-    DepartmentDetailComponent,
-    Error404Component
-  ],
-  imports: [
+	declarations: [
+		AppComponent,
+		ToolbarComponent,
+		LoginComponent,
+		DashboardComponent,
+		UplaodListComponent,
+		DepartmentsComponent,
+		CallingListsComponent,
+		DepartmentDetailComponent,
+		Error404Component,
+		AddDepartmentsComponent,
+		UpListsComponent
+	],
+	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		FormsModule,
@@ -90,12 +93,14 @@ export function HttpLoaderFactory(http: HttpClient) {
 		FormsModule,
 		FileUploadModule
 	],
-  providers: [ LogedInGuard ,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
-      multi: true
-    }],
+	providers: [
+		LogedInGuard,
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: HttpErrorInterceptor,
+			multi: true
+		}
+	],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}

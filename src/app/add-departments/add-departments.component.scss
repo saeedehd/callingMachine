@@ -1,0 +1,13 @@
+:host {
+	display: block;
+	padding-top: 20px;
+}
+mat-form-field {
+	width: 100%;
+}
+
+.fields {
+	> div {
+		padding: 0 10px;
+	}
+}

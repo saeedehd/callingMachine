@@ -1,12 +1,12 @@
 <div class="mat-elevation-z8">
-  <button mat-icon-button aria-label="Example icon-button with a add icon"> 
+  <button mat-icon-button aria-label="Example icon-button with a add icon" [routerLink]="['departments/Add']" routerLinkActive="router-link-active" >
     <mat-icon>add</mat-icon>{{ 'Insert Department' | translate}}</button>
 
   <table mat-table [dataSource]="dataSource" flex-align="center">
-    <!-- Enable Column -->
-    <ng-container matColumnDef="enable">
-      <th mat-header-cell *matHeaderCellDef> Enable </th>
-      <td mat-cell *matCellDef="let element"> {{element.enable}} </td>
+     <!-- info Column -->
+     <ng-container matColumnDef="info">
+      <th mat-header-cell *matHeaderCellDef> info </th>
+      <td mat-cell *matCellDef="let element"> {{element.info}} </td>
     </ng-container>
 
     <!-- priority Column -->
@@ -35,10 +35,10 @@
     </ng-container>
 
     <!-- nwd_table_id Column -->
-    <ng-container matColumnDef="nwd_table_id">
+    <!-- <ng-container matColumnDef="nwd_table_id">
       <th mat-header-cell *matHeaderCellDef> nwd_table_id </th>
       <td mat-cell *matCellDef="let element"> {{element.nwd_table_id}} </td>
-    </ng-container>
+    </ng-container> -->
 
 
     <!-- queue Column -->
@@ -54,10 +54,10 @@
     </ng-container>
 
     <!-- url_id Column -->
-    <ng-container matColumnDef="url_id">
+    <!-- <ng-container matColumnDef="url_id">
       <th mat-header-cell *matHeaderCellDef> url_id </th>
       <td mat-cell *matCellDef="let element"> {{element.url_id}} </td>
-    </ng-container>
+    </ng-container> -->
 
     <!-- call_more Column -->
     <ng-container matColumnDef="call_more">
@@ -76,9 +76,9 @@
    <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> action </th>
       <td mat-cell *matCellDef="let element">
-          <button mat-icon-button aria-label="Example icon-button with a edit icon" [routerLink]="['/department',element.id,'edit']">
+          <button mat-icon-button aria-label="Example icon-button with a edit icon" matTooltip="ویرایش" [routerLink]="['/department',element.id,'edit']">
           <mat-icon>edit</mat-icon></button>
-          <button mat-icon-button aria-label="Example icon-button with a delete icon">
+          <button mat-icon-button aria-label="Example icon-button with a delete icon" matTooltip="حذف" [routerLink]="['/department',element.id,'edit']" routerLinkActive="router-link-active" >
           <mat-icon>delete</mat-icon></button>
       </td>
     </ng-container>
@@ -89,5 +89,5 @@
 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
-   
+
   </div>

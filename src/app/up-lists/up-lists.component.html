@@ -1,0 +1,110 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" flex-align="center">
+    <!-- List ID Column -->
+    <ng-container matColumnDef="ListID">
+      <th mat-header-cell *matHeaderCellDef> ListID </th>
+      <td mat-cell *matCellDef="let element"> {{element.ListID}} </td>
+    </ng-container>
+
+    <!-- department Column -->
+    <ng-container matColumnDef="AllRecords">
+      <th mat-header-cell *matHeaderCellDef> AllRecords </th>
+      <td mat-cell *matCellDef="let element"> {{element.AllRecords}} </td>
+    </ng-container>
+
+
+    <!-- numberOfCall Column -->
+    <ng-container matColumnDef="SuccessRecords">
+      <th mat-header-cell *matHeaderCellDef> SuccessRecords </th>
+      <td mat-cell *matCellDef="let element"> {{element.SuccessRecords}} </td>
+    </ng-container>
+
+    <!-- numberOfDailed Column -->
+    <ng-container matColumnDef="numberOfDailed">
+      <th mat-header-cell *matHeaderCellDef> numberOfDailed </th>
+      <td mat-cell *matCellDef="let element"> {{element.numberOfDailed}} </td>
+    </ng-container>
+
+    <!-- status Column -->
+    <ng-container matColumnDef="CustomerID">
+      <th mat-header-cell *matHeaderCellDef> CustomerID </th>
+      <td mat-cell *matCellDef="let element"> {{element.CustomerID}} </td>
+    </ng-container>
+
+
+    <!-- department -->
+    <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef> department </th>
+        <td mat-cell *matCellDef="let element"> {{element.department}} </td>
+      </ng-container>
+
+     <!-- add_date -->
+    <ng-container matColumnDef="add_date">
+          <th mat-header-cell *matHeaderCellDef> add_date </th>
+          <td mat-cell *matCellDef="let element"> {{element.add_date}} </td>
+        </ng-container>
+
+      <!-- Last_attempt_date -->
+        <ng-container matColumnDef="Last_attempt_date">
+            <th mat-header-cell *matHeaderCellDef> Last_attempt_date </th>
+            <td mat-cell *matCellDef="let element"> {{element.Last_attempt_date}} </td>
+          </ng-container>
+
+       <!-- Date -->
+          <ng-container matColumnDef="Date">
+              <th mat-header-cell *matHeaderCellDef> Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.Date}} </td>
+            </ng-container>
+
+         <!-- lock_call -->
+            <ng-container matColumnDef="lock_call">
+                <th mat-header-cell *matHeaderCellDef> lock_call </th>
+                <td mat-cell *matCellDef="let element"> {{element.lock_call}} </td>
+              </ng-container>
+
+
+         <!-- call_status -->
+              <ng-container matColumnDef="call_status">
+                  <th mat-header-cell *matHeaderCellDef> call_status </th>
+                  <td mat-cell *matCellDef="let element"> {{element.call_status}} </td>
+                </ng-container>
+
+          <!-- call_duration -->
+                <ng-container matColumnDef="call_duration">
+                    <th mat-header-cell *matHeaderCellDef> call_duration </th>
+                    <td mat-cell *matCellDef="let element"> {{element.call_duration}} </td>
+                  </ng-container>
+
+            <!-- info -->
+                <ng-container matColumnDef="info">
+                  <th mat-header-cell *matHeaderCellDef> info </th>
+                 <td mat-cell *matCellDef="let element"> {{element.info}} </td>
+                   </ng-container>
+
+
+             <!-- action Column -->
+                  <ng-container matColumnDef="actions">
+                  <th mat-header-cell *matHeaderCellDef> actions </th>
+                  <td mat-cell *matCellDef="let element">
+                  <button mat-icon-button aria-label="Example icon-button with a delete icon" [routerLink]="['/department',element.id,'edit']" matTooltip="حذف">
+                  <mat-icon>delete</mat-icon></button>
+                  <!-- <button mat-icon-button aria-label="Example icon-button with a get_app icon" [routerLink]="['/department',element.id,'edit']">
+                  <mat-icon>get_app</mat-icon></button> -->
+                  <button mat-icon-button aria-label="exmaple icon-button with a get_app icon" [routerLink]="['/department',element.id,'edit']" routerLinkActive="router-link-active" matTooltip="تلاش مجدد">
+                  <mat-icon>refresh</mat-icon>
+                  </button>
+
+                  <button mat-icon-button aria-label="exmaple icon-button with a get_app icon" [routerLink]="['/department',element.id,'edit']" routerLinkActive="router-link-active" matTooltip="نمایش جزئیات">
+                  <mat-icon>note_add</mat-icon>
+                  </button>
+              </td>
+            </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  </div>
