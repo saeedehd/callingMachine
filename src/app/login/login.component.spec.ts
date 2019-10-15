@@ -15,10 +15,11 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[BrowserAnimationsModule,MatCardModule,ReactiveFormsModule,RouterModule.forRoot([]), MatButtonModule,MatInputModule, MatFormFieldModule, MatIconModule, MatSnackBarModule,FlexLayoutModule,TranslateModule.forRoot(),HttpClientModule],
-      declarations: [ LoginComponent ]
+      // tslint:disable-next-line: max-line-length
+      imports: [BrowserAnimationsModule, MatCardModule, ReactiveFormsModule, RouterModule.forRoot([]), MatButtonModule, MatInputModule, MatFormFieldModule, MatIconModule, MatSnackBarModule, FlexLayoutModule, TranslateModule.forRoot(), HttpClientModule],
+      declarations: [LoginComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,14 +1,14 @@
 import { Component, EventEmitter } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
- 
+
 function readBase64(file): Promise<any> {
-  var reader  = new FileReader();
-  var future = new Promise((resolve, reject) => {
-    reader.addEventListener("load", function () {
+  const reader = new FileReader();
+  const future = new Promise((resolve, reject) => {
+    reader.addEventListener('load', () => {
       resolve(reader.result);
     }, false);
 
-    reader.addEventListener("error", function (event) {
+    reader.addEventListener('error', (event) => {
       reject(event);
     }, false);
 
@@ -26,21 +26,21 @@ const URL = 'http://localhost:4000/api/upload';
 })
 export class UplaodListComponent {
 
-  public uploader:FileUploader = new FileUploader({
-    url: URL, 
-    disableMultipart:true
-    });
-  public hasBaseDropZoneOver:boolean = false;
-  public hasAnotherDropZoneOver:boolean = false;
+  public uploader: FileUploader = new FileUploader({
+    url: URL,
+    disableMultipart: true
+  });
+  public hasBaseDropZoneOver = false;
+  public hasAnotherDropZoneOver = false;
 
   fileObject: any;
 
 
-  public fileOverBase(e:any):void {
-    this.hasBaseDropZoneOver = e; 
+  public fileOverBase(e: any): void {
+    this.hasBaseDropZoneOver = e;
   }
- 
-  public fileOverAnother(e:any):void {
+
+  public fileOverAnother(e: any): void {
     this.hasAnotherDropZoneOver = e;
   }
 
@@ -50,9 +50,10 @@ export class UplaodListComponent {
     console.log(file);
 
     readBase64(file)
-      .then(function(data) {
-      console.log(data);
-    })
+      // tslint:disable-next-line: only-arrow-functions
+      .then((data) => {
+        console.log(data);
+      });
 
   }
 }

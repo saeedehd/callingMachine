@@ -14,7 +14,7 @@
                     <div fxFlex="50">
                         <mat-form-field>
                             <mat-label>Enable</mat-label>
-                            <mat-select>
+                            <mat-select fxFlex="10">
 
                                 <mat-option *ngFor="let num of num" [value]="num.value">
                                     {{num.viewValue}}
@@ -52,11 +52,10 @@
                         </mat-form-field>
                     </div>
 
-
                     <div fxFlex="50">
                      <mat-form-field>
                       <mat-label>nwd_table_id</mat-label>
-                      <mat-select>
+                      <mat-select fxFlex="10">
                         <mat-option *ngFor="let num of num" [value]="num.value">
                             {{num.viewValue}}
                          </mat-option>
@@ -64,13 +63,11 @@
                      </mat-form-field>
                     </div>
 
-
                     <div fxFlex="50">
                         <mat-form-field>
                             <input type="text" matInput placeholder="Queue" formControlName="queue">
                         </mat-form-field>
                     </div>
-
 
                     <div fxFlex="50">
                         <mat-form-field>
@@ -83,7 +80,6 @@
                           <input type="text" matInput placeholder="query_method" formControlName="query_method">
                         </mat-form-field>
                     </div>
-
 
                     <div fxFlex="50">
                         <mat-form-field>

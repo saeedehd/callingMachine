@@ -2,12 +2,13 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
 
 describe('AppComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				imports: [ RouterTestingModule, TranslateModule.forRoot() ],
+				imports: [ RouterTestingModule, TranslateModule.forRoot(), RouterModule ],
 				declarations: [ AppComponent ]
 			}).compileComponents();
 		})
@@ -25,10 +26,10 @@ describe('AppComponent', () => {
 		expect(app.title);
 	});
 
-  // it('should render title in a h1 tag', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('h1').textContent).toContain('Welcome to callingMachine!');
-  // });
+	it('should render title in a h1 tag', () => {
+		const fixture = TestBed.createComponent(AppComponent);
+		fixture.detectChanges();
+		const compiled = fixture.debugElement.nativeElement;
+		expect(compiled.querySelector('h1'));
+	});
 });

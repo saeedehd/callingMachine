@@ -10,6 +10,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 export class HttpErrorInterceptor implements HttpInterceptor {
+	snackbar: any;
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 		return next.handle(request).pipe(
 			retry(1),
@@ -26,7 +27,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 				}
 				window.alert(errorMessage);
 
-				// this.snackbar.open('اطلاعات اشتباه بود', null, { duration: 999 });
+				this.snackbar.open('اطلاعات اشتباه بود', null, { duration: 999 });
 
 				return throwError(errorMessage);
 			})

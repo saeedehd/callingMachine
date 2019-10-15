@@ -11,19 +11,21 @@ describe('ToolbarComponent', () => {
 	let component: ToolbarComponent;
 	let fixture: ComponentFixture<ToolbarComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        TranslateModule.forRoot(),
-        MatIconModule,
-        MatToolbarModule,
-        RouterModule.forRoot([]),
-        HttpClientModule
-      ],
-      declarations: [ToolbarComponent]
-    })
-      .compileComponents();
-  }));
+	beforeEach(
+		async(() => {
+			TestBed.configureTestingModule({
+				imports: [
+					TranslateModule.forRoot(),
+					MatIconModule,
+					MatToolbarModule,
+					RouterModule,
+					HttpClientModule,
+					RouterTestingModule
+				],
+				declarations: [ ToolbarComponent ]
+			}).compileComponents();
+		})
+	);
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(ToolbarComponent);

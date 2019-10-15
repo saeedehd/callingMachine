@@ -2,8 +2,8 @@
     <div class="row">
 
         <div class="col-md-3">
-
-            <h3>{{'select files' | translate}}</h3>
+          <br>
+            <h4>{{'select files' | translate}}</h4>
 
             <div ng2FileDrop
                  [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
@@ -12,35 +12,21 @@
                  class="well my-drop-zone">
                 Base drop zone
             </div>
-<!--
-            <div ng2FileDrop
-                 [ngClass]="{'another-file-over-class': hasAnotherDropZoneOver}"
-                 (fileOver)="fileOverAnother($event)"
-                 [uploader]="uploader"
-                 class="well my-drop-zone">
-                Another drop zone
-            </div> -->
-
-            {{'Multiple' | translate}}
-            <input type="file" ng2FileSelect [uploader]="uploader" multiple accepet=".csv" /><br/>
-<!--
-            Single
-            <input type="file" ng2FileSelect [uploader]="uploader" /> -->
-        </div>
+            <br>
+            <h4>انتخاب فایل با choose file :</h4>
+            <input type="file" ng2FileSelect [uploader]="uploader" multiple accepet=".csv" />
+          </div>
 
         <div class="col-md-9" style="margin-bottom: 40px">
 
             <h3>{{'Upload Queue' | translate}}</h3>
-            <p>Queue length: {{ uploader?.queue?.length }}</p>
+            <p>طول صف : {{ uploader?.queue?.length }}</p>
 
             <table class="table">
                 <thead>
                 <tr>
-                    <th width="50%">{{'Name' | translate}}</th>
-                    <th>{{'size' | translate}}</th>
-                    <!-- <th>Progress</th>
-                    <th>Status</th>
-                    <th>Actions</th> -->
+                    <th  fxFlex="nogrow">{{'Name' | translate}}</th>
+                    <!-- <th  width="1%">{{'size' | translate}}</th> -->
                 </tr>
                 </thead>
                 <tbody>
@@ -66,10 +52,7 @@
                                 (click)="item.cancel()" [disabled]="!item.isUploading">
                             <span class="glyphicon glyphicon-ban-circle"></span> {{'cancel' | translate}}
                         </button>
-                        <!-- <button type="button" class="btn btn-danger btn-xs"
-                                (click)="item.remove()">
-                            <span class="glyphicon glyphicon-trash"></span> Remove
-                        </button> -->
+
                     </td>
                 </tr>
                 </tbody>
@@ -77,7 +60,7 @@
 
             <div>
                 <div>
-                    Queue progress:
+                    پیشرفت صف :
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
                     </div>
@@ -90,10 +73,7 @@
                         (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
                     <span class="glyphicon glyphicon-ban-circle"></span> {{'Cancel All' | translate}}
                 </button>
-                <!-- <button type="button" class="btn btn-danger btn-s"
-                        (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-                    <span class="glyphicon glyphicon-trash"></span> Remove all
-                </button> -->
+
             </div>
 
         </div>
@@ -103,12 +83,6 @@
 </div>
 
 
-
-    <div dir="rtl" fxFlex="nogrow">
-        <mat-form-field class="exmaple-full-width">
-          <input matInput placeholder="نام دپارتمان..." >
-        </mat-form-field>
-      </div>
 
 
 

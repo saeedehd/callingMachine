@@ -1,7 +1,8 @@
 export interface List {
-    listID: number;
-    department: string;
-    numberOfCall: number;
-    numberOfDailed: number;
-    status: string;
+	CustomerID: number;
+	department: string;
+	URL_id: number;
+	numberOfCall: number;
+	numberOfDailed: number;
+	status: string;
 }

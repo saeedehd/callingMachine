@@ -21,7 +21,8 @@ import {
 	MatMenuModule,
 	MatSelectModule,
 	MatBottomSheetModule,
-	MatTooltipModule
+	MatTooltipModule,
+	MatSortModule
 } from '@angular/material';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -82,6 +83,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 		MatSelectModule,
 		MatBottomSheetModule,
 		MatTooltipModule,
+		MatSortModule,
 
 		TranslateModule.forRoot({
 			loader: {
