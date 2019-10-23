@@ -43,7 +43,7 @@ import { AddDepartmentsComponent } from './add-departments/add-departments.compo
 import { UpListsComponent } from './up-lists/up-lists.component';
 import { AuthServiceMockInterceptor } from './mock-interceptors/auth-service-mock.interceptor';
 import { CallRequestServiceMockInterceptor } from './mock-interceptors/call-request-service-mock.interceptor';
-
+import { DepartmentService } from './services/department.service';
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -99,6 +99,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 	],
 	providers: [
 		LogedInGuard,
+		DepartmentService,
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: HttpErrorInterceptor,

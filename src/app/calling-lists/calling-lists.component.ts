@@ -87,10 +87,11 @@ export class CallingListsComponent implements OnInit {
 	remove(item: CallRequest) {
 		debugger;
 		this.callingService.remove(item.ID).subscribe((res) => {
-			// this.sb
 			debugger;
+			// this.sb
 		});
 	}
+
 	search() {
 		this.callingService
 			.query({

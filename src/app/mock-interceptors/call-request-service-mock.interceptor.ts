@@ -14,7 +14,9 @@ export class CallRequestServiceMockInterceptor implements HttpInterceptor {
 		if (request.url.endsWith('/callrequests')) {
 			return of(new HttpResponse({ status: 200, body: CallRequsetResponse, url: request.url }));
 		}
+		// tslint:disable-next-line: triple-equals
 		if (request.url.includes('/callrequests/') && request.method.toLowerCase() == 'delete') {
+			// tslint:disable-next-line: no-debugger
 			debugger;
 			return of(new HttpResponse({ status: 200, url: request.url }));
 		} else {

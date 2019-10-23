@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { UpLists } from '../interfaces/UpLists';
+import { UplistsService } from '../services/uplists.service';
 @Component({
 	selector: 'app-up-lists',
 	templateUrl: './up-lists.component.html',
@@ -32,6 +33,18 @@ export class UpListsComponent implements OnInit {
 
 	@ViewChild(MatPaginator, { static: true })
 	paginator: MatPaginator;
+
+	constructor(private UpListsService: UplistsService) {
+		this.UpListsService.remove({ criteria: {}, pageNo: 0 }).subscribe((response: any) => {
+			this.dataSource.data = response;
+		});
+	}
+
+	remove(item: UpLists) {
+		debugger;
+		this.UpListsService.remove(item.ListID).subscribe((res) => {});
+		debugger;
+	}
 
 	onselect(id: number) {
 		console.log(id);
