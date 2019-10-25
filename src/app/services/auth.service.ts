@@ -34,7 +34,7 @@ export class AuthService {
 		//   .post<User>(`${environment.server_ip}/logout`, { username,password,returnSecureToken: true});
 		localStorage.removeItem(environment.LOCAL_STORAGE_KEY);
 		this.user.next(null);
-		this.router.navigate([ '/login' ]);
+		this.router.navigate(['/login']);
 	}
 
 	login({ username, password }: { username: string; password: string }): Observable<User> {
