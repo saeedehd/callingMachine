@@ -9,7 +9,7 @@ import { Department } from '../interfaces/department.interface';
 @Component({
 	selector: 'app-departments',
 	templateUrl: './departments.component.html',
-	styleUrls: [ './departments.component.scss' ]
+	styleUrls: ['./departments.component.scss']
 })
 export class DepartmentsComponent implements OnInit {
 	// tslint:disable-next-line: no-use-before-declare
@@ -48,13 +48,6 @@ export class DepartmentsComponent implements OnInit {
 		// tslint:disable-next-line: no-debugger
 		debugger;
 		this.DepartmentService.remove(item.id).subscribe((res) => {
-			debugger;
-		});
-	}
-
-	edit(item: Department) {
-		debugger;
-		this.DepartmentService.edit(item.id).subscribe((res) => {
 			debugger;
 		});
 	}

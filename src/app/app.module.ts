@@ -6,24 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-	MatSidenavModule,
-	MatCheckboxModule,
-	MatIconModule,
-	MatToolbarModule,
-	MatListModule,
-	MatSnackBarModule,
-	MatButtonModule,
-	MatCardModule,
-	MatFormFieldModule,
-	MatInputModule,
-	MatTableModule,
-	MatMenuModule,
-	MatSelectModule,
-	MatBottomSheetModule,
-	MatTooltipModule,
-	MatSortModule
-} from '@angular/material';
+
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -44,6 +27,7 @@ import { UpListsComponent } from './up-lists/up-lists.component';
 import { AuthServiceMockInterceptor } from './mock-interceptors/auth-service-mock.interceptor';
 import { CallRequestServiceMockInterceptor } from './mock-interceptors/call-request-service-mock.interceptor';
 import { DepartmentService } from './services/department.service';
+import { MaterialModule } from './material/material.module';
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -68,30 +52,15 @@ export function HttpLoaderFactory(http: HttpClient) {
 		FormsModule,
 		HttpClientModule,
 		BrowserAnimationsModule,
-		MatSidenavModule,
-		MatCheckboxModule,
-		MatSnackBarModule,
-		MatIconModule,
-		MatCardModule,
-		MatButtonModule,
-		MatToolbarModule,
-		MatTableModule,
-		MatInputModule,
-		MatFormFieldModule,
-		MatListModule,
+		MaterialModule,
 		FlexLayoutModule,
 		ReactiveFormsModule,
-		MatMenuModule,
-		MatSelectModule,
-		MatBottomSheetModule,
-		MatTooltipModule,
-		MatSortModule,
 
 		TranslateModule.forRoot({
 			loader: {
 				provide: TranslateLoader,
 				useFactory: HttpLoaderFactory,
-				deps: [ HttpClient ]
+				deps: [HttpClient]
 			}
 		}),
 		FormsModule,
@@ -116,6 +85,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 			multi: true
 		}
 	],
-	bootstrap: [ AppComponent ]
+	bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
