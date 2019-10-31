@@ -15,7 +15,7 @@ import {
   MatSelectModule,
   MatBottomSheetModule,
   MatTooltipModule,
-  MatSortModule
+  MatSortModule,
 } from '@angular/material';
 
 const MaterialComponents = [

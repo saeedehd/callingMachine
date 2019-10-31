@@ -1,18 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource, MatSort } from '@angular/material';
-import { CallResult } from '../interfaces/CallResult';
-import { FormControl } from '@angular/forms';
-import { CallingService } from '../services/calling.service';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { CallRequest } from '../interfaces/call-request.interface';
+import { MaterialModule } from '../material/material.module';
+import { MatTableDataSource } from '@angular/material';
+import { CallingService } from '../services/calling.service';
 
 @Component({
 	selector: 'app-calling-lists',
 	templateUrl: './calling-lists.component.html',
-	styleUrls: [ './calling-lists.component.scss' ]
+	styleUrls: ['./calling-lists.component.scss']
 })
-export class CallingListsComponent implements OnInit {
-	dataSource = new MatTableDataSource<CallRequest>();
+export class CallingListsComponent {
+	callStatusList: number[] = [0, 1];
 	displayedColumns: string[] = [
 		'Customer_ID',
 		'Number',
@@ -27,102 +26,88 @@ export class CallingListsComponent implements OnInit {
 		'Info1',
 		'action'
 	];
-
-	IdFilter = new FormControl();
-	NumberFilter = new FormControl();
-	DepartmentFilter = new FormControl();
-	AddDateFilter = new FormControl();
-	CallStatusFilter = new FormControl();
-
-	filteredValues = { Customer_ID: '', Number: '', Department: '', Add_Date: '', Call_Status: '' };
-
-	@ViewChild(MatSort, { static: false })
-	sort: MatSort;
-
-	selectedDepartment: CallResult;
-
-	onselect(id: number) {
-		console.log(id);
-	}
-
-	@ViewChild(MatPaginator, { static: true })
-	paginator: MatPaginator;
+	dataSource = new MatTableDataSource<CallRequest>();
 
 	constructor(private callingService: CallingService) {
 		this.callingService
 			.query({ criteria: {}, pageNo: 0 })
 			.subscribe((callReqeusts) => (this.dataSource.data = callReqeusts));
 	}
-
-	ngOnInit() {
-		this.dataSource.paginator = this.paginator;
-
-		this.IdFilter.valueChanges.subscribe((IdFilterValue) => {
-			this.filteredValues['Customer_ID'] = IdFilterValue;
-			this.dataSource.filter = JSON.stringify(this.filteredValues);
-		});
-
-		this.NumberFilter.valueChanges.subscribe((NumberFilterValue) => {
-			this.filteredValues['Number'] = NumberFilterValue;
-			this.dataSource.filter = JSON.stringify(this.filteredValues);
-		});
-
-		this.DepartmentFilter.valueChanges.subscribe((DepartmentFilterValue) => {
-			this.filteredValues['Department'] = DepartmentFilterValue;
-			this.dataSource.filter = JSON.stringify(this.filteredValues);
-		});
-		this.AddDateFilter.valueChanges.subscribe((AddDateFilterValue) => {
-			this.filteredValues['Add_Date'] = AddDateFilterValue;
-			this.dataSource.filter = JSON.stringify(this.filteredValues);
-		});
-
-		this.CallStatusFilter.valueChanges.subscribe((CallStatusFilterValue) => {
-			this.filteredValues['Call_Status'] = CallStatusFilterValue;
-			this.dataSource.filter = JSON.stringify(this.filteredValues);
-		});
-
-		this.dataSource.filterPredicate = this.customFilterPredicate();
-	}
+	// form group
+	filterForm = new FormGroup({
+		IdFilter: new FormControl(),
+		NumberFilter: new FormControl(),
+		DepartmentFilter: new FormControl(),
+		AddDateFilter: new FormControl(),
+		CallStatusFilter: new FormControl()
+	});
 
 	remove(item: CallRequest) {
 		debugger;
 		this.callingService.remove(item.ID).subscribe((res) => {
 			debugger;
-			// this.sb
+			// this.sb
 		});
 	}
 
 	search() {
+		debugger;
 		this.callingService
 			.query({
 				criteria: {
-					Customer_ID: this.IdFilter.value
+					Customer_ID: this.ID.value,
+					Number: this.Number.value,
+					Department: this.Department.value,
+					addDate: this.AddDate.value,
+					callStatus: this.CallStatus.value
 				},
 				pageNo: 0
 			})
 			.subscribe((callReqeusts) => (this.dataSource.data = callReqeusts));
 	}
 
-	applyFilter(filterValue: string) {
-		this.dataSource.filter = filterValue.trim().toLowerCase();
-		this.dataSource.filter = filterValue;
-	}
+	get ID() { return this.filterForm.get('IdFilter'); }
+	get Number() { return this.filterForm.get('NumberFilter'); }
+	get Department() { return this.filterForm.get('DepartmentFilter'); }
+	get AddDate() { return this.filterForm.get('AddDateFilter'); }
+	get CallStatus() { return this.filterForm.get('CallStatusFilter'); }
 
-	customFilterPredicate() {
-		const myFilterPredicate = function(data: CallResult, filter: string): boolean {
-			let searchString = JSON.parse(filter);
-			return (
-				data.Customer_ID.toString().trim().indexOf(searchString.Customer_ID) !== -1 &&
-				data.Number.toString().trim().indexOf(searchString.Number) !== -1 &&
-				data.Department.toString().trim().toLowerCase().indexOf(searchString.Department.toLowerCase()) !== -1 &&
-				data.Call_Status.toString().trim().indexOf(searchString.Call_Status) !== -1 &&
-				data.Add_Date.toString().trim().indexOf(searchString.Add_Date) !== -1
-			);
-		};
-		return myFilterPredicate;
-	}
+	isArray = function (a) {
+		return (!!a) && (a.constructor === Array);
+	};
+	isObject = function (a) {
+		return (!!a) && (a.constructor === Object);
+	};
+	getFormsValue() {
+		const filterValues = {
+			Id: this.ID.value,
+			number: this.Number.value,
+			department: this.Department.value,
+			addDate: this.AddDate.value,
+			callStatus: this.CallStatus.value,
+		}
+		debugger;
+		this.dataSource.filterPredicate = (data, filter) => {
+			let displayData = true;
+			let myFilter = JSON.parse(filter);
+			this.search();
+			// for (var key in myFilter) {
+			// 	if (myFilter[key]) {
+			// 		if (typeof myFilter[key] === "string") {
+			// 			if (data[key] != myFilter[key]) {
+			// 				displayData = false;
+			// 			}
+			// 		}
+			// 		if (this.isArray(myFilter[key])) {
+			// 			if (!myFilter[key].includes(data[key])) {
+			// 				displayData = false;
+			// 			}
+			// 		}
+			// 	}
+			// }
+			return displayData;
+		}
 
-	ngAfterViewInit(): void {
-		this.dataSource.sort = this.sort;
+		this.dataSource.filter = JSON.stringify(filterValues);
 	}
 }
