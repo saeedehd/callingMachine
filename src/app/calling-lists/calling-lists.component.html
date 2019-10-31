@@ -3,33 +3,33 @@
     <div mat-dialog-content class="filter__form">
       <div class="form-group">
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="IdFilter" placeholder="Enter Customer Id">
+          <input matInput formControlName="IdFilter" placeholder="کد اشتراک">
         </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="NumberFilter" placeholder="Enter Number">
+          <input matInput formControlName="NumberFilter" placeholder="شماره تماس">
         </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="DepartmentFilter" placeholder="Enter department">
+          <input matInput formControlName="DepartmentFilter" placeholder="دپارتمان">
         </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field class="example-full-width">
-          <input matInput formControlName="AddDateFilter" placeholder="Enter add date">
+          <input matInput formControlName="AddDateFilter" placeholder="تاریخ ورود اطلاعات">
         </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field>
-          <mat-select formControlName="CallStatusFilter" multiple placeholder="Select Call Status">
+          <mat-select formControlName="CallStatusFilter" multiple placeholder="وضعیت تماس">
             <mat-option *ngFor="let status of callStatusList" [value]="status">{{status}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
       <div class="form-group">
-        <button type="submit" (click)="search()" mat-raised-button>Search</button>
+        <button type="submit" (click)="search()" mat-raised-button>{{'Search' | translate}}</button>
       </div>
     </div>
   </form>
