@@ -72,42 +72,4 @@ export class CallingListsComponent {
 	get AddDate() { return this.filterForm.get('AddDateFilter'); }
 	get CallStatus() { return this.filterForm.get('CallStatusFilter'); }
 
-	isArray = function (a) {
-		return (!!a) && (a.constructor === Array);
-	};
-	isObject = function (a) {
-		return (!!a) && (a.constructor === Object);
-	};
-	getFormsValue() {
-		const filterValues = {
-			Id: this.ID.value,
-			number: this.Number.value,
-			department: this.Department.value,
-			addDate: this.AddDate.value,
-			callStatus: this.CallStatus.value,
-		}
-		debugger;
-		this.dataSource.filterPredicate = (data, filter) => {
-			let displayData = true;
-			let myFilter = JSON.parse(filter);
-			this.search();
-			// for (var key in myFilter) {
-			// 	if (myFilter[key]) {
-			// 		if (typeof myFilter[key] === "string") {
-			// 			if (data[key] != myFilter[key]) {
-			// 				displayData = false;
-			// 			}
-			// 		}
-			// 		if (this.isArray(myFilter[key])) {
-			// 			if (!myFilter[key].includes(data[key])) {
-			// 				displayData = false;
-			// 			}
-			// 		}
-			// 	}
-			// }
-			return displayData;
-		}
-
-		this.dataSource.filter = JSON.stringify(filterValues);
-	}
 }

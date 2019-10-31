@@ -1,37 +1,39 @@
-<form [formGroup]="filterForm">
-  <div mat-dialog-content class="filter__form">
-    <div class="form-group">
-      <mat-form-field class="example-full-width">
-        <input matInput formControlName="IdFilter" placeholder="Enter Customer Id">
-      </mat-form-field>
+<div fxLayout="row" fxLayoutAlign="space-around stretch">
+  <form [formGroup]="filterForm">
+    <div mat-dialog-content class="filter__form">
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="IdFilter" placeholder="Enter Customer Id">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="NumberFilter" placeholder="Enter Number">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="DepartmentFilter" placeholder="Enter department">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput formControlName="AddDateFilter" placeholder="Enter add date">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select formControlName="CallStatusFilter" multiple placeholder="Select Call Status">
+            <mat-option *ngFor="let status of callStatusList" [value]="status">{{status}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <button type="submit" (click)="search()" mat-raised-button>Search</button>
+      </div>
     </div>
-    <div class="form-group">
-      <mat-form-field class="example-full-width">
-        <input matInput formControlName="NumberFilter" placeholder="Enter Number">
-      </mat-form-field>
-    </div>
-    <div class="form-group">
-      <mat-form-field class="example-full-width">
-        <input matInput formControlName="DepartmentFilter" placeholder="Enter department">
-      </mat-form-field>
-    </div>
-    <div class="form-group">
-      <mat-form-field class="example-full-width">
-        <input matInput formControlName="AddDateFilter" placeholder="Enter add date">
-      </mat-form-field>
-    </div>
-    <div class="form-group">
-      <mat-form-field>
-        <mat-select formControlName="CallStatusFilter" multiple placeholder="Select Call Status">
-          <mat-option *ngFor="let status of callStatusList" [value]="status">{{status}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="modal-inforce__footer">
-      <button type="submit" (click)="getFormsValue()" mat-raised-button>Search</button>
-    </div>
-  </div>
-</form>
+  </form>
+</div>
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort>
