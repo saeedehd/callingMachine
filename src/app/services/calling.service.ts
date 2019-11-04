@@ -15,10 +15,12 @@ export class CallingService {
 		console.log('sdf');
 	}
 
-	query(data: CallingRequestQueryRequest): Observable<CallRequest[]> {
-		return this.http
-			.get<{ Result: CallRequest[] }>(`${environment.server_ip}/callrequests`)
-			.pipe(map((res) => res.Result));
+	query(
+		data: CallingRequestQueryRequest
+	): Observable<{ Result: CallRequest[]; total_items: number; page_no: number }> {
+		return this.http.get<{ Result: CallRequest[]; total_items: number; page_no: number }>(
+			`${environment.server_ip}/callrequests`
+		);
 	}
 
 	remove(callRequestID): Observable<void> {

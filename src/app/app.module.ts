@@ -28,6 +28,7 @@ import { AuthServiceMockInterceptor } from './mock-interceptors/auth-service-moc
 import { CallRequestServiceMockInterceptor } from './mock-interceptors/call-request-service-mock.interceptor';
 import { DepartmentService } from './services/department.service';
 import { MaterialModule } from './material/material.module';
+import { UpListsServiceMockInterceptore } from './mock-interceptors/uplists-service-mock-interceptore';
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -60,7 +61,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 			loader: {
 				provide: TranslateLoader,
 				useFactory: HttpLoaderFactory,
-				deps: [HttpClient]
+				deps: [ HttpClient ]
 			}
 		}),
 		FormsModule,
@@ -83,8 +84,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 			provide: HTTP_INTERCEPTORS,
 			useClass: CallRequestServiceMockInterceptor,
 			multi: true
+		},
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: UpListsServiceMockInterceptore,
+			multi: true
 		}
 	],
-	bootstrap: [AppComponent]
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}

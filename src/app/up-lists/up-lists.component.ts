@@ -11,7 +11,7 @@ import { UplistsService } from '../services/uplists.service';
 })
 export class UpListsComponent implements OnInit {
 	// tslint:disable-next-line: no-use-before-declare
-	dataSource = new MatTableDataSource<UpLists>(ELEMENT_DATA);
+	dataSource = new MatTableDataSource<UpLists>([]);
 
 	displayedColumns: string[] = [
 		'ListID',
@@ -35,19 +35,20 @@ export class UpListsComponent implements OnInit {
 	paginator: MatPaginator;
 
 	constructor(private UpListsService: UplistsService) {
-		this.UpListsService.remove({ criteria: {}, pageNo: 0 }).subscribe((response: any) => {
-			this.dataSource.data = response;
+		this.UpListsService.list().subscribe((response) => {
+			this.dataSource.data = response.Result;
 		});
 	}
 
 	remove(item: UpLists) {
 		debugger;
-		this.UpListsService.remove(item.ListID).subscribe((res) => {});
+		this.UpListsService.remove(item.ID).subscribe((res) => {});
 		debugger;
 	}
 
 	onselect(id: number) {
 		console.log(id);
+		return id;
 	}
 
 	ngOnInit() {
@@ -55,68 +56,68 @@ export class UpListsComponent implements OnInit {
 	}
 }
 
-const ELEMENT_DATA: UpLists[] = [
-	{
-		ListID: 1,
-		AllRecords: 2,
-		SuccessRecords: 'qm',
-		Date: '2019/10/11',
-		actions: 'delete',
-		CustomerID: 12,
-		department: 'qm',
-		add_date: '2019/10/13',
-		Last_attempt_date: '2019/10/12',
-		lock_call: 2,
-		call_status: 3,
-		call_duration: 23,
-		info: 'jafarian'
-	},
+// const ELEMENT_DATA: UpLists[] = [
+// 	{
+// 		ID: '1',
+// 		AllRecords: '2',
+// 		SuccessRecords: 'qm',
+// 		Date: '2019/10/11',
+// 		actions: 'delete',
+// 		CustomerID: '12',
+// 		department: 'qm',
+// 		add_date: '2019/10/13',
+// 		Last_attempt_date: '2019/10/12',
+// 		lock_call: '2',
+// 		call_status: '3',
+// 		call_duration: '23',
+// 		info: 'jafarian'
+// 	},
 
-	{
-		ListID: 1,
-		AllRecords: 2,
-		SuccessRecords: 'qm',
-		Date: '2019/10/11',
-		actions: 'delete',
-		CustomerID: 12,
-		department: 'qm',
-		add_date: '2019/10/13',
-		Last_attempt_date: '2019/10/12',
-		lock_call: 2,
-		call_status: 3,
-		call_duration: 23,
-		info: 'jafarian'
-	},
+// 	{
+// 		ID: '1',
+// 		AllRecords: '2',
+// 		SuccessRecords: 'qm',
+// 		Date: '2019/10/11',
+// 		actions: 'delete',
+// 		CustomerID: '12',
+// 		department: 'qm',
+// 		add_date: '2019/10/13',
+// 		Last_attempt_date: '2019/10/12',
+// 		lock_call: 2,
+// 		call_status: 3,
+// 		call_duration: 23,
+// 		info: 'jafarian'
+// 	},
 
-	{
-		ListID: 1,
-		AllRecords: 2,
-		SuccessRecords: 'qm',
-		Date: '2019/10/11',
-		actions: 'delete',
-		CustomerID: 12,
-		department: 'qm',
-		add_date: '2019/10/13',
-		Last_attempt_date: '2019/10/12',
-		lock_call: 2,
-		call_status: 3,
-		call_duration: 23,
-		info: 'jafarian'
-	},
+// 	{
+// 		ID: 1,
+// 		AllRecords: 2,
+// 		SuccessRecords: 'qm',
+// 		Date: '2019/10/11',
+// 		actions: 'delete',
+// 		CustomerID: 12,
+// 		department: 'qm',
+// 		add_date: '2019/10/13',
+// 		Last_attempt_date: '2019/10/12',
+// 		lock_call: 2,
+// 		call_status: 3,
+// 		call_duration: 23,
+// 		info: 'jafarian'
+// 	},
 
-	{
-		ListID: 1,
-		AllRecords: 2,
-		SuccessRecords: 'qm',
-		Date: '2019/10/11',
-		actions: 'delete',
-		CustomerID: 12,
-		department: 'qm',
-		add_date: '2019/10/13',
-		Last_attempt_date: '2019/10/12',
-		lock_call: 2,
-		call_status: 3,
-		call_duration: 23,
-		info: 'jafarian'
-	}
-];
+// 	{
+// 		ID: 1,
+// 		AllRecords: 2,
+// 		SuccessRecords: 'qm',
+// 		Date: '2019/10/11',
+// 		actions: 'delete',
+// 		CustomerID: 12,
+// 		department: 'qm',
+// 		add_date: '2019/10/13',
+// 		Last_attempt_date: '2019/10/12',
+// 		lock_call: 2,
+// 		call_status: 3,
+// 		call_duration: 23,
+// 		info: 'jafarian'
+// 	}
+// ];

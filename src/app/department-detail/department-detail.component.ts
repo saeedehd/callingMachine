@@ -16,14 +16,12 @@ export interface Num {
 	styleUrls: [ './department-detail.component.scss' ]
 })
 export class DepartmentDetailComponent implements OnInit {
-	// tslint:disable-next-line: member-ordering
 	num: Num[] = [ { value: '0', viewValue: '0' }, { value: '1', viewValue: '1' } ];
 
 	formGroup: FormGroup;
-	snackbar: any;
 	constructor(
-		private authService: AuthService,
-		private router: ActivatedRoute // private snackbar: MatSnackBar, // private snackbar: MatSnackBar
+		private snackbar: MatSnackBar,
+		private router: ActivatedRoute // private snackbar: MatSnackBar,  private snackbar: MatSnackBar
 	) {
 		this.formGroup = new FormGroup({
 			enable: new FormControl('1', [ Validators.required ]),
@@ -47,20 +45,8 @@ export class DepartmentDetailComponent implements OnInit {
 	edit() {
 		if (this.formGroup.invalid) {
 			return this.snackbar.open(' اطلاعات کامل نیست', null, { duration: 999 });
-		} else {
-			// tslint:disable-next-line: no-unused-expression
-			this.formGroup.valid;
 		}
-		return this.snackbar.open('اطلاعات ثبت شد ', null, { duration: 999 });
 
-		this.authService.login(this.formGroup.value).subscribe(
-			(resData) => {
-				console.log(resData);
-			},
-			(errorMessage) => {
-				this.snackbar.open('noch', null, { duration: 999 });
-				console.log(errorMessage);
-			}
-		);
+		return this.snackbar.open('اطلاعات ثبت شد ', null, { duration: 999 });
 	}
 }

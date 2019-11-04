@@ -15,7 +15,6 @@
       <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
     </ng-container>
 
-
     <!-- department Column -->
     <ng-container matColumnDef="department">
       <th mat-header-cell *matHeaderCellDef> {{'Department' | translate}} </th>
@@ -81,13 +80,12 @@
    <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> {{'action' | translate}} </th>
       <td mat-cell *matCellDef="let element">
-          <button mat-icon-button aria-label="Example icon-button with a edit icon" matTooltip="ویرایش"  (edit)="edit(element)" [routerLink]="['/department',element.id,'edit']" routerLinkActive="router-link-active" >
+          <button mat-icon-button aria-label="Example icon-button with a edit icon" matTooltip="ویرایش"   [routerLink]="['/department',element.id,'edit']" routerLinkActive="router-link-active" >
           <mat-icon>edit</mat-icon></button>
           <button mat-icon-button aria-label="Example icon-button with a delete icon" matTooltip="حذف" (click)="remove(element)">
           <mat-icon>delete</mat-icon></button>
       </td>
     </ng-container>
-
 
 
 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

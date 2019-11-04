@@ -3,9 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  server_ip: 'http://127.0.0.1/api/v1',
-  LOCAL_STORAGE_KEY : 'user'
+	production: false,
+	server_ip: 'https://virtserver.swaggerhub.com/shatel-accelerators/CallingMachine/1.0.0',
+	LOCAL_STORAGE_KEY: 'user'
 };
 
 /*

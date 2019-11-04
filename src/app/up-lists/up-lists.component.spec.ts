@@ -4,6 +4,7 @@ import { UpListsComponent } from './up-lists.component';
 import { MatTableModule, MatIconModule } from '@angular/material';
 import { RouterModule, RouterStateSnapshot } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('UpListsComponent', () => {
 	let component: UpListsComponent;
@@ -12,7 +13,7 @@ describe('UpListsComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				imports: [ MatTableModule, MatIconModule, RouterModule, RouterTestingModule ],
+				imports: [ MatTableModule, MatIconModule, RouterModule, RouterTestingModule, TranslateModule ],
 				declarations: [ UpListsComponent ]
 			}).compileComponents();
 		})

@@ -18,7 +18,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 			catchError((error: HttpErrorResponse) => {
 				// tslint:disable-next-line: no-debugger
 				let errorMessage = '';
-				if (error.error instanceof ErrorEvent) {
 					// client-side error
 					errorMessage = `Error: ${error.error.message}`;
 				} else {

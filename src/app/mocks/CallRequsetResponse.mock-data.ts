@@ -12,7 +12,7 @@ export const CallRequsetResponse = {
 			Attempt: 0,
 			Call_Status: 1,
 			Call_Duration: 30,
-			Info1: ''
+			Info1: 'jafarian'
 		},
 		{
 			ID: 2,
@@ -26,7 +26,7 @@ export const CallRequsetResponse = {
 			Attempt: 2,
 			Call_Status: 0,
 			Call_Duration: 50,
-			Info1: ''
+			Info1: 'jafarian'
 		}
 	]
 };

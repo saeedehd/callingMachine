@@ -13,7 +13,13 @@ export class UplistsService {
 		console.log('sdf');
 	}
 
-	remove(UpListsID): Observable<void> {
+	list() {
+		return this.http.get<{ Result: UpLists[]; total: number; page_no: number }>(
+			`${environment.server_ip}/uplistsrequests`
+		);
+	}
+	remove(UpListsID: string): Observable<void> {
+		debugger;
 		return this.http.delete<void>(`${environment.server_ip}/uplistsrequests/${UpListsID}`);
 	}
 }
