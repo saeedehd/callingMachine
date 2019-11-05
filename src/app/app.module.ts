@@ -20,7 +20,7 @@ import { DepartmentsComponent } from './departments/departments.component';
 import { CallingListsComponent } from './calling-lists/calling-lists.component';
 import { LogedInGuard } from './guards/loged-in.guard';
 import { DepartmentDetailComponent } from './department-detail/department-detail.component';
-import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
+// import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 import { Error404Component } from './error404/error404.component';
 import { AddDepartmentsComponent } from './add-departments/add-departments.component';
 import { UpListsComponent } from './up-lists/up-lists.component';
@@ -29,6 +29,7 @@ import { CallRequestServiceMockInterceptor } from './mock-interceptors/call-requ
 import { DepartmentService } from './services/department.service';
 import { MaterialModule } from './material/material.module';
 import { UpListsServiceMockInterceptore } from './mock-interceptors/uplists-service-mock-interceptore';
+import { DepartmentServiceMockInterceptore } from './mock-interceptors/department-service-mock-interceptor';
 export function HttpLoaderFactory(http: HttpClient) {
 	return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -70,11 +71,11 @@ export function HttpLoaderFactory(http: HttpClient) {
 	providers: [
 		LogedInGuard,
 		DepartmentService,
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: HttpErrorInterceptor,
-			multi: true
-		},
+		// {
+		// 	provide: HTTP_INTERCEPTORS,
+		// 	useClass: HttpErrorInterceptor,
+		// 	multi: true
+		// },
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: AuthServiceMockInterceptor,
@@ -88,6 +89,12 @@ export function HttpLoaderFactory(http: HttpClient) {
 		{
 			provide: HTTP_INTERCEPTORS,
 			useClass: UpListsServiceMockInterceptore,
+			multi: true
+		},
+
+		{
+			provide: HTTP_INTERCEPTORS,
+			useClass: DepartmentServiceMockInterceptore,
 			multi: true
 		}
 	],

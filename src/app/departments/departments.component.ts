@@ -13,7 +13,7 @@ import { Department } from '../interfaces/department.interface';
 })
 export class DepartmentsComponent implements OnInit {
 	// tslint:disable-next-line: no-use-before-declare
-	dataSource = new MatTableDataSource<Department>(ELEMENT_DATA);
+	dataSource = new MatTableDataSource<Department>([]);
 	// tslint:disable-next-line: max-line-length
 	displayedColumns: string[] = [
 		'info',
@@ -36,6 +36,10 @@ export class DepartmentsComponent implements OnInit {
 
 	// tslint:disable-next-line: no-shadowed-variable
 	constructor(private DepartmentService: DepartmentService) {
+		this.DepartmentService.list().subscribe((response) => {
+			this.dataSource.data = response.Result;
+		});
+
 		// this.DepartmentService.remove({ criteria: {}, pageNo: 0 }).subscribe((response: any) => {
 		// 	this.dataSource.data = response;
 		// 	this.DepartmentService.edit({ criteria: {}, pageNo: 0 }).subscribe((response: any) => {
@@ -51,8 +55,6 @@ export class DepartmentsComponent implements OnInit {
 			// tslint:disable-next-line: no-debugger
 			debugger;
 		});
-
-		alert('رکورد مورد نظر حذف شد');
 	}
 
 	onselect(id: number) {
@@ -64,79 +66,79 @@ export class DepartmentsComponent implements OnInit {
 	}
 }
 
-const ELEMENT_DATA: Department[] = [
-	{
-		info: 'jafarian',
-		id: 1,
-		priority: 7,
-		department: 'qm-pcs',
-		Unit: 'cts',
-		start_working_time: '8:00:00',
-		end_working_time: '17:50:00',
-		dialplan_context: 'calling-machine-cmqm1-start',
-		queue: 'cmqm1',
-		query_method: 'QS1',
-		call_more: 1,
-		retry_time: 180
-	},
-	{
-		info: 'jafarian',
-		id: 1,
-		priority: 7,
-		department: 'qm-pcs',
-		Unit: 'qm',
-		start_working_time: '8:00:00',
-		end_working_time: '17:50:00',
-		// nwd_table_id: 1,
-		dialplan_context: 'calling-machine-cmqm1-start',
-		queue: 'cmqm1',
-		query_method: 'QS1',
-		call_more: 1,
-		retry_time: 180
-	},
-	{
-		info: 'jafarian',
-		id: 2,
-		priority: 7,
-		department: 'qm-pcs',
-		Unit: 'pcs',
-		start_working_time: '8:00:00',
-		end_working_time: '17:50:00',
-		// nwd_table_id: 1,
-		dialplan_context: 'calling-machine-cmqm1-start',
-		queue: 'cmqm1',
-		query_method: 'QS1',
-		call_more: 1,
-		retry_time: 180
-	},
-	{
-		info: 'jafarian',
-		id: 3,
-		priority: 7,
-		department: 'qm-pcs',
-		Unit: 'qm',
-		start_working_time: '8:00:00',
-		end_working_time: '17:50:00',
-		// nwd_table_id: 1,
-		dialplan_context: 'calling-machine-cmqm1-start',
-		queue: 'cmqm1',
-		query_method: 'QS1',
-		call_more: 1,
-		retry_time: 180
-	},
-	{
-		info: 'jafarian',
-		id: 4,
-		priority: 7,
-		department: 'qm-pcs',
-		Unit: 'cts',
-		start_working_time: '8:00:00',
-		end_working_time: '17:50:00',
-		// nwd_table_id: 1,
-		dialplan_context: 'calling-machine-cmqm1-start',
-		queue: 'cmqm1',
-		query_method: 'QS1',
-		call_more: 1,
-		retry_time: 180
-	}
-];
+// const ELEMENT_DATA: Department[] = [
+// 	{
+// 		info: 'jafarian',
+// 		id: 1,
+// 		priority: 7,
+// 		department: 'qm-pcs',
+// 		Unit: 'cts',
+// 		start_working_time: '8:00:00',
+// 		end_working_time: '17:50:00',
+// 		dialplan_context: 'calling-machine-cmqm1-start',
+// 		queue: 'cmqm1',
+// 		query_method: 'QS1',
+// 		call_more: 1,
+// 		retry_time: 180
+// 	},
+// 	{
+// 		info: 'jafarian',
+// 		id: 1,
+// 		priority: 7,
+// 		department: 'qm-pcs',
+// 		Unit: 'qm',
+// 		start_working_time: '8:00:00',
+// 		end_working_time: '17:50:00',
+// 		// nwd_table_id: 1,
+// 		dialplan_context: 'calling-machine-cmqm1-start',
+// 		queue: 'cmqm1',
+// 		query_method: 'QS1',
+// 		call_more: 1,
+// 		retry_time: 180
+// 	},
+// 	{
+// 		info: 'jafarian',
+// 		id: 2,
+// 		priority: 7,
+// 		department: 'qm-pcs',
+// 		Unit: 'pcs',
+// 		start_working_time: '8:00:00',
+// 		end_working_time: '17:50:00',
+// 		// nwd_table_id: 1,
+// 		dialplan_context: 'calling-machine-cmqm1-start',
+// 		queue: 'cmqm1',
+// 		query_method: 'QS1',
+// 		call_more: 1,
+// 		retry_time: 180
+// 	},
+// 	{
+// 		info: 'jafarian',
+// 		id: 3,
+// 		priority: 7,
+// 		department: 'qm-pcs',
+// 		Unit: 'qm',
+// 		start_working_time: '8:00:00',
+// 		end_working_time: '17:50:00',
+// 		// nwd_table_id: 1,
+// 		dialplan_context: 'calling-machine-cmqm1-start',
+// 		queue: 'cmqm1',
+// 		query_method: 'QS1',
+// 		call_more: 1,
+// 		retry_time: 180
+// 	},
+// 	{
+// 		info: 'jafarian',
+// 		id: 4,
+// 		priority: 7,
+// 		department: 'qm-pcs',
+// 		Unit: 'cts',
+// 		start_working_time: '8:00:00',
+// 		end_working_time: '17:50:00',
+// 		// nwd_table_id: 1,
+// 		dialplan_context: 'calling-machine-cmqm1-start',
+// 		queue: 'cmqm1',
+// 		query_method: 'QS1',
+// 		call_more: 1,
+// 		retry_time: 180
+// 	}
+// ];

@@ -12,8 +12,14 @@ export class DepartmentService {
 		console.log('sdf');
 	}
 
-	list(): Observable<Department[]> {
-		throw new Error();
+	// list(): Observable<Department[]> {
+	// 	throw new Error();
+	// }
+
+	list() {
+		return this.http.get<{ Result: Department[]; total: number; page_no: number }>(
+			`${environment.server_ip}/departmentrequests`
+		);
 	}
 
 	remove(DepartmentID): Observable<void> {
